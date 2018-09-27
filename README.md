@@ -14,18 +14,22 @@
 ```sh
 /artists/#artistID
 ```
+Get the header information for the specified artist
 ### Post
 ```sh
 /artists/
 ```
+Post a new artist with all the required header information 
 ### Put
 ```sh
 /artists/#artistID
 ```
+Edit an existing artist with the entire header information specified
 ### Delete
 ```sh
 /artists/#artistID
 ```
+Delete the artist with the specified ID
 <!-- ## Requirements
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
