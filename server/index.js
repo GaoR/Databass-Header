@@ -34,7 +34,7 @@ app.use(cors());
 const bodyParser = require('body-parser');
 const HeaderDB = require('../database/index.js');
 app.use(bodyParser.json());
-// app.use(express.static(__dirname + '/../public/dist'));
+app.use(express.static(__dirname + '/../public/dist'));
 
 // Upon GET request to '/artist/:artistID', queries the HeaderDB (mongoDB) and sends back artistObj.
 app.get('/artists/:artistID', (req, res) => {
@@ -49,9 +49,21 @@ app.get('/artists/:artistID', (req, res) => {
     res.status(400).send({ ERROR: 'artistID parameter accepts numbers between 1 and 100' });
   }
 });
-app.post('/artists/:artistID', (req, res) => {
-  res.status(400).send({ ERROR: 'does not accept post request' });
+app.post('/artists/', (req, res) => {
+  console.log(req.body);
+  res.send('Posted!');
 });
+
+app.delete('/artists/:artistID', (req, res) => {
+  console.log(req.body);
+  res.send('Deleted!');
+});
+
+app.put('/artists/:artistID', (req, res) => {
+  console.log(req.body);
+  res.send('Updated!');
+});
+
 app.listen(process.env.PORT || 3004, function onStart(err) {
   if (err) {
     console.log(err);
