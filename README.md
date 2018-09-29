@@ -1,28 +1,35 @@
-# Spotify Clone
-
-> Spotify as microservices
-
-# Team
-
-|        Member    |Section                    |Repo                         |
-|----------------|-------------------------------|-----------------------------|
-|[davydhong](https://github.com/davydhong)|Header            |https://github.com/DotThen/Header           |
-|[wissemgamra](https://github.com/wissemgamra) | Albums and Player | https://github.com/DotThen/AlbumListMusicPlayer |
-|[Mac087](https://github.com/Mac087) | Popular Songs | https://github.com/DotThen/PopularSongs |
-|[shabbyjoon](https://github.com/shabbyjoon) | Related Artists | https://github.com/DotThen/RelatedArtists |
-
-
+# SDC Project
 
 ## Table of Contents
 
-<!-- 1. [Usage](#Usage) -->
+1. [Usage](#Usage)
 <!-- 1. [Requirements](#requirements) -->
-1. [Development](#development)
+2. [Development](#development)
 
-<!-- ## Usage
+## Usage
 
-> In construction -->
+## API Endpoints
 
+### Get
+```sh
+/artists/#artistID
+```
+Get the header information for the specified artist
+### Post
+```sh
+/artists/
+```
+Post a new artist with all the required header information 
+### Put
+```sh
+/artists/#artistID
+```
+Edit an existing artist with the entire header information specified
+### Delete
+```sh
+/artists/#artistID
+```
+Delete the artist with the specified ID
 <!-- ## Requirements
 
 An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
