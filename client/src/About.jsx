@@ -31,7 +31,7 @@ class About extends Component {
           <div className="biography-container">
             <h2 className="biography-header">Bio</h2>
             <div className={`biography-txt-container ${this.state.collapseBio ? 'collapsed' : 'expanded'}`}>
-              {this.props.artist.about.Biography.split('\n').map(paragraph => (
+              {this.props.artist.bio.split('\n').map(paragraph => (
                 <React.Fragment>
                   <p className="biography-txt">{paragraph}</p>
                 </React.Fragment>
@@ -44,7 +44,7 @@ class About extends Component {
           <ArtistPics artistImages={this.props.artist.artistImages} />
         </div>
         <div className="about-container-right">
-          <LocationStat stats={this.props.artist.about.Where} />
+          <LocationStat stats={this.props.artist.cities} />
         </div>
       </div>
     );

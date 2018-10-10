@@ -1,0 +1,16 @@
+config:
+  target: 'http://127.0.0.1:3004'
+  phases:
+    - duration: 60
+      arrivalRate: 20
+      rampTo: 100
+      name: "Warm up the application"
+    - duration: 60
+      arrivalRate: 10
+      name: "Sustained max load"
+scenarios:
+  - flow:
+    - loop:
+      - get:
+          url: "/postgres/9000005"
+    count: 100

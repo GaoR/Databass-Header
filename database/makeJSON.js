@@ -3,17 +3,16 @@ const faker = require('faker');
 const fs = require('fs');
 const path = require('path');
 
+// const createCities = (n = 100) => {
+//   const cities = [];
+  
+//   for (let i = 0; i < n; i += 1) {
+//     cities.push(faker.address.city())
+//   }
+//   return cities;
+// }
 
 const randomNumber = (max, min = 0) => Math.ceil(Math.random() * max) + min;
-
-const createCities = (n = 100) => {
-  const cities = [];
-
-  for (let i = 0; i < n; i += 1) {
-    cities.push(faker.address.city())
-  }
-  return cities;
-}
 
 const createImages = (n = 1000) => {
   const images = [];
@@ -27,10 +26,10 @@ const createImages = (n = 1000) => {
 class Artists {
   constructor(props) {
     this.name = faker.name.findName();
-    this.followed = Math.round(Math.random()) ? true : false,
+    this.followed = false,
     this.followers = 'PLACE_HOLDER',
-    this.verified = Math.round(Math.random() * 0.7 + 0.3) ? true : false,
-    this.bio = faker.lorem.paragraphs(randomNumber(4, 2), '\n\n'),
+    this.verified = Math.round(Math.random()) ? true : false,
+    this.bio = faker.lorem.paragraph(),
     this.photos = [],
     this.cities = {}
   };
@@ -70,15 +69,15 @@ const createArtist = (num = 1, index = 0) => {
   return artists;
 }
 
-const writeFile = (stream, json) => {
+ const writeFile = (stream, json) => new Promise ((resolve, reject) => {
   stream.write(json, 'utf-8', () => {
-    stream.end();
+    stream.end(resolve);
   })
-};
+});
 
- const generatorLooper = async () => {
+ const generateData = async () => {
   let tracker = 0;
-  for (let i = 10; i < 100; i += 1) {
+  for (let i = 1; i < 100; i += 1) {
     let artists = createArtist(100000, tracker);
     let stream = fs.createWriteStream(path.join(__dirname, 'JSON-data', `data-${i}.json`));
     let json = JSON.stringify(artists, null, 2);
@@ -89,10 +88,4 @@ const writeFile = (stream, json) => {
   }
 }
 
- generatorLooper(); 
-
-//  const writeFile = (stream, json) => new Promise ((resolve, reject) => {
-//   stream.write(json, 'utf-8', () => {
-//     stream.end(resolve);
-//   })
-// });
+generateData(); 
