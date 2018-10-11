@@ -1,9 +1,9 @@
-// require('newrelic');
+require('newrelic');
 const express = require('express');
+const path = require('path');
 const postgres = require('../database/postgres.js');
   
 const app = express();
-// app.use(express.static(__dirname + '/../public/dist'))
 
 app.get('/artists/:artistID', (req, res) => {
   const { artistID } = req.params;
@@ -31,6 +31,14 @@ app.put('/artists/:artistID', (req, res) => {
   console.log(req.body);
   res.send('Updated!');
 });
+
+// app.get('/bundle.js', (req, res) => {
+//   res.sendFile((path.resolve('public/dist/bundle.js')));
+// });
+
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve('public/dist/index.html'));
+// });
 
 app.listen(process.env.PORT || 3004, function onStart(err) {
   if (err) {
