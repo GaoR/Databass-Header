@@ -42,10 +42,7 @@ const postFind = (id, callback) => {
           result.cities[res.rows[i].city] = res.rows[i].followers;
         };
 
-        console.log(result);
-  
         callback(null, [result]);
-        // callback(null, res.rows);
       }
     })
   })
