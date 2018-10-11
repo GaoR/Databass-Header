@@ -20,7 +20,7 @@ const pool = new Pool({
 const postFind = (id, callback) => {
   pool.connect((err, client, done) => {
     if (err) throw err;
-    client.query(`SELECT artistName, bio, followed, verified, images, city, artists_cities.followers
+    client.query(`SELECT artistname, bio, followed, verified, images, city, artists_cities.followers
     FROM artists_cities
     INNER JOIN artists ON artists.artistID = artists_cities.artistID
     INNER JOIN cities ON cities.cityID = artists_cities.cityID
@@ -31,7 +31,7 @@ const postFind = (id, callback) => {
         callback(err.stack, null);
       } else {
         const result = {};
-        result.artistID = res.rows[0].artistID;
+        result.artistName = res.rows[0].artistname;
         result.bio = res.rows[0].bio;
         result.followersNumber = res.rows[0].followers;
         result.verified = res.rows[0].verified;
@@ -41,6 +41,8 @@ const postFind = (id, callback) => {
         for (let i = 0; i < 5; i++) {
           result.cities[res.rows[i].city] = res.rows[i].followers;
         };
+
+        console.log(result);
   
         callback(null, [result]);
         // callback(null, res.rows);

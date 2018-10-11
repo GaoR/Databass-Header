@@ -32,13 +32,13 @@ app.put('/artists/:artistID', (req, res) => {
   res.send('Updated!');
 });
 
-// app.get('/bundle.js', (req, res) => {
-//   res.sendFile((path.resolve('public/dist/bundle.js')));
-// });
+app.get('/bundle.js', (req, res) => {
+  res.sendFile((path.resolve('public/dist/bundle.js')));
+});
 
-// app.get('*', (req, res) => {
-//   res.sendFile(path.resolve('public/dist/index.html'));
-// });
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve('public/dist/index.html'));
+});
 
 app.listen(process.env.PORT || 3004, function onStart(err) {
   if (err) {
